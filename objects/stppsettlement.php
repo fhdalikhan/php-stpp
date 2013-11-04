@@ -3,7 +3,7 @@
  *	PHP based wrapper for SecureTrading's new STPP protocol.
  *	
  *	This is the object that represents updated settlement details.
- *
+ *	
  *	@version: untested
  *	@author: David Weston <stpp@typefish.co.uk>
  */

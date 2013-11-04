@@ -5,7 +5,7 @@
  *	The addressable object includes functionality for addresses and such, as
  *	quite a lot of functionality is shared between billing and customers, for
  *	example.
- *
+ *	
  *	@version: untested
  *	@author: David Weston <stpp@typefish.co.uk>
  */

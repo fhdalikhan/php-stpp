@@ -9,7 +9,7 @@
  *	Customer information does not constitute billing information, so there's
  *	no real need to fill in anything like addresses and such - however there
  *	/is/ a recommendation from ST to do so.
- *
+ *	
  *	@version: untested
  *	@author: David Weston <stpp@typefish.co.uk>
  */

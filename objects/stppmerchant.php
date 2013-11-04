@@ -9,7 +9,7 @@
  *	Merchant information is usually not required when using STPP, however
  *	it is a required feature for 3D-Secure, which most if not all
  *	transactions should be performed using (if available).
- *
+ *	
  *	@version: untested
  *	@author: David Weston <stpp@typefish.co.uk>
  */

@@ -5,7 +5,7 @@
  *	This won't allow you to connect your system immediately
  *	to a setup, however, it'll allow you to with ease create
  *	and maintain a new contract with a SecureTrading node.
- *
+ *	
  *	@version: untested
  *	@author: David Weston <stpp@typefish.co.uk>
  */
@@ -298,6 +298,9 @@ class STAPI
 			$this->$caller(),
 			$method,
 		);
+		
+		if(!method_exists($callback[0], $callback[1]))
+			return null;
 		
 		$result = call_user_func_array($callback, $arguments);
 		

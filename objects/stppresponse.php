@@ -5,6 +5,10 @@
  *	The STPPResponse object parses the response from the SecureTrading endpoint,
  *	and puts it into a nice easy to use output.
  *
+ *	This class can be used to revisit previous transactions. All you need to do is
+ *	give the XML response as the argument to the constructor and all will be
+ *	revealed.
+ *	
  *	@version: untested
  *	@author: David Weston <stpp@typefish.co.uk>
  */
@@ -42,10 +46,10 @@ class STPPResponse
 	 */
 	public function isSuccessful()
 	{
-		if(!isset($this->feed->error->code))
+		if(!isset($this->feed->response->error->code))
 			return null;
 		
-		return ((integer) $this->feed->error->code == 0);
+		return ((integer) $this->feed->response->error->code == 0);
 	}
 	
 	
@@ -100,5 +104,18 @@ class STPPResponse
 		}
 		
 		return $set;
+	}
+	
+	
+	/**
+	 *	Check if the response indicated that this request/response pair
+	 *	actually is associated with the testing environment or not.
+	 */
+	public function isLiveEnvironment()
+	{
+		if(!isset($this->feed->response->live))
+			return null;
+		
+		return ((integer) $this->feed->response->live == 1);
 	}
 }

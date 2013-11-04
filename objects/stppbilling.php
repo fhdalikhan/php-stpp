@@ -6,7 +6,7 @@
  *	the card and the like. It's recommended that everything stuck into
  *	this class matches the name registered on the card. Addresses
  *	are also key.
- *
+ *	
  *	@version: untested
  *	@author: David Weston <stpp@typefish.co.uk>
  */
