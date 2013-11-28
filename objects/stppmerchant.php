@@ -50,7 +50,7 @@ class STPPMerchant extends STPPObject
 	/**
 	 *	Set the terminating URL - for use in 3DSecure transactions.
 	 */
-	public function set3DSecureTermUrl($url)
+	public function setTermUrl($url)
 	{
 		$this->options["termurl"] = $url;
 		return $this;

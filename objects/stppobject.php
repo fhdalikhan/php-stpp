@@ -31,6 +31,9 @@ abstract class STPPObject
 		
 		foreach($this->options as $option => $value)
 		{
+			if($value === null)
+				continue;
+			
 			$method = "compile".$option;
 			
 			if(method_exists($this, $method))

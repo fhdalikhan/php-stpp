@@ -62,4 +62,15 @@ class STPPOperation extends STPPObject
 		$this->options["pareq"] = $value;
 		return $this;
 	}
+	
+	
+	/**
+	 *	Set the 3DSecure PaRes (payer authentication response) value.
+	 *	Based on values sent back from ST.
+	 */
+	public function set3DSecurePaRes($value)
+	{
+		$this->options["pares"] = $value;
+		return $this;
+	}
 }

@@ -25,7 +25,7 @@ class STPPResponse
 	/**
 	 *	Called when the response has been constructed.
 	 */
-	public function __construct($response)
+	public function __construct($response = null, $request = null)
 	{
 		$this->feed = simplexml_load_string($response);
 		return true;
@@ -50,6 +50,18 @@ class STPPResponse
 			return null;
 		
 		return ((integer) $this->feed->response->error->code == 0);
+	}
+	
+	
+	/**
+	 *	Retrieves the error message.
+	 */
+	public function getErrorMessage()
+	{
+		if($this->isSuccessful())
+			return null;
+		
+		return (array) $this->feed->response->error;
 	}
 	
 	

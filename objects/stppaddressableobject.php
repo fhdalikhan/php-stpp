@@ -80,6 +80,16 @@ abstract class STPPAddressable extends STPPObject
 	
 	
 	/**
+	 *	Set the country of this addressable object.
+	 */
+	public function setCountry($country)
+	{
+		$this->options["country"] = $country;
+		return $this;
+	}
+	
+	
+	/**
 	 *	Set the first name of the person referenced in this addressable object.
 	 */
 	public function setNamePrefix($prefix)

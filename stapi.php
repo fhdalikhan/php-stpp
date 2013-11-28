@@ -50,7 +50,8 @@ class STAPI
 	 */
 	public function __construct($address = "127.0.0.1", $port = 5000)
 	{
-		# $this->connect($address, $port);
+		if($address != null)
+			$this->connect($address, $port);
 	}
 	
 	
@@ -59,7 +60,7 @@ class STAPI
 	 */
 	public function __destruct()
 	{
-		# $this->disconnect();
+		$this->disconnect();
 	}
 	
 	
@@ -83,7 +84,10 @@ class STAPI
 	 */
 	protected function disconnect()
 	{
-		return fclose($this->connection);
+		if($this->connection)
+			return fclose($this->connection);
+		
+		return true;
 	}
 	
 	
@@ -276,6 +280,8 @@ class STAPI
 	 *	calling conventions.
 	 *
 	 *	Otherwise, the correct value will be returned unmolested.
+	 *
+	 *	@todo: Fix this so that stuff like setOperation3DSecure... works.
 	 */
 	public function __call($method, $arguments)
 	{
@@ -312,21 +318,45 @@ class STAPI
 	
 	
 	/**
+	 *	Some __get abuse - if there is an object getter, call it and 
+	 *	return its value.
+	 */
+	public function __get($property)
+	{
+		$caller = "get".ucfirst($property);
+		
+		if(!method_exists($this, $caller))
+			return null;
+		
+		return $this->$caller();
+	}
+	
+	
+	/**
 	 *	Used to push a request off to the SecureTrading endpoint.
 	 */
 	public function call($type)
 	{
-		$request = $this->compile($type)->asXML();
+		$failure = new STPPResponse("<responseblock></responseblock>");
 		
-		if(!fwrite($this->connection, $request, strlen($request)))
-			return false;
+		if(!$this->connection)
+			return $failure;
+		
+		$request = $this->compile($type);
+		$outbound = $request->asXML()."\r\n";
+		
+		if(!fwrite($this->connection, $outbound, strlen($outbound)))
+			return $failure;
 		
 		$response = "";
 		
-		while(($chunk = fread($this->connection, 4096)) !== false)
+		while(($chunk = fread($this->connection, 4096)) != false)
 			$response .= $chunk;
 		
-		return new STPPResponse($response);
+		if(!$response)
+			return $failure;
+		
+		return new STPPResponse($response, $request);
 	}
 	
 	
