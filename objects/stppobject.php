@@ -5,7 +5,7 @@
  *	This is the god object for all parts of the request, such as
  *	the merchant, operations and such.
  *	
- *	@version: untested
+ *	@version: 1.0-beta
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 

@@ -9,7 +9,7 @@
  *	give the XML response as the argument to the constructor and all will be
  *	revealed.
  *	
- *	@version: untested
+ *	@version: 1.0-beta
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 

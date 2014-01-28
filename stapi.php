@@ -6,7 +6,7 @@
  *	to a setup, however, it'll allow you to with ease create
  *	and maintain a new contract with a SecureTrading node.
  *	
- *	@version: untested
+ *	@version: 1.0-beta
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
@@ -329,6 +329,36 @@ class STAPI
 			return null;
 		
 		return $this->$caller();
+	}
+	
+	
+	/**
+	 *	Some __set abuse - pretty much shorthand for the set?
+	 *	methods.
+	 */
+	public function __set($property, $value)
+	{
+		$caller = "set".ucfirst($property);
+		
+		if(!method_exists($this, $caller))
+			return null;
+		
+		return $this->$caller($value);
+	}
+	
+	
+	/**
+	 *	Some __unset abuse - pretty much shorthand for the reset?
+	 *	methods.
+	 */
+	public function __unset($property)
+	{
+		$caller = "reset".ucfirst($property);
+		
+		if(!method_exists($this, $caller))
+			return null;
+		
+		return $this->$caller($value);
 	}
 	
 	

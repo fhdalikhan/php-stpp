@@ -10,7 +10,7 @@
  *	it is a required feature for 3D-Secure, which most if not all
  *	transactions should be performed using (if available).
  *	
- *	@version: untested
+ *	@version: 1.0-beta
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 

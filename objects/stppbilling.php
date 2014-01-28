@@ -7,7 +7,7 @@
  *	this class matches the name registered on the card. Addresses
  *	are also key.
  *	
- *	@version: untested
+ *	@version: 1.0-beta
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
