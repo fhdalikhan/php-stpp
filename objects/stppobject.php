@@ -5,7 +5,7 @@
  *	This is the god object for all parts of the request, such as
  *	the merchant, operations and such.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
@@ -39,7 +39,7 @@ abstract class STPPObject
 			if(method_exists($this, $method))
 				$this->$method($element);
 			else
-				$element->addChild(strtolower($option), $value);
+				$element->addChild(strtolower($option), $this->escape($value));
 		}
 		
 		return true;
@@ -52,5 +52,15 @@ abstract class STPPObject
 	public final function getOptions()
 	{
 		return $this->options;
+	}
+	
+	
+	/**
+	 *	We can use this as a way of escaping values, since SimpleXMLElement::addChild
+	 *	doesn't escape things for you.
+	 */
+	public function escape($string)
+	{
+		return htmlspecialchars($string);
 	}
 }

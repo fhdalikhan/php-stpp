@@ -9,7 +9,7 @@
  *	give the XML response as the argument to the constructor and all will be
  *	revealed.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
@@ -19,7 +19,8 @@ class STPPResponse
 	/**
 	 *	Store the XML response somewhere...
 	 */
-	protected $feed = null;
+	private $feed = null;
+	private $request = null;
 	
 	
 	/**
@@ -28,7 +29,19 @@ class STPPResponse
 	public function __construct($response = null, $request = null)
 	{
 		$this->feed = simplexml_load_string($response);
+		$this->request = $request;
+		
 		return true;
+	}
+	
+	
+	/**
+	 *	Retrieves a cleansed version of the request - where this means
+	 *	all credit card information is removed.
+	 */
+	public function getRequest()
+	{
+		return $this->request;
 	}
 	
 	

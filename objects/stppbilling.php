@@ -7,7 +7,7 @@
  *	this class matches the name registered on the card. Addresses
  *	are also key.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
@@ -157,7 +157,8 @@ class STPPBilling extends STPPAddressable
 		if(empty($this->options["amount"]))
 			return false;
 		
-		$element->addChild("amount", $this->options["amount"]["value"])->addAttribute("currencycode", $this->options["amount"]["currencycode"]);
+		$element->addChild("amount", $this->escape($this->options["amount"]["value"]))
+		        ->addAttribute("currencycode", $this->escape($this->options["amount"]["currencycode"]));
 		
 		return true;
 	}
@@ -176,12 +177,12 @@ class STPPBilling extends STPPAddressable
 		$node = $element->addChild("payment");
 		
 		if(isset($this->options["payment"]["type"]))
-			$node->addAttribute("type", $this->options["payment"]["type"]);
+			$node->addAttribute("type", $this->escape($this->options["payment"]["type"]));
 		
 		unset($this->options["payment"]["type"]);
 		
 		foreach($this->options["payment"] as $option => $value)
-			$node->addChild($option, $value);
+			$node->addChild($option, $this->escape($value));
 		
 		return true;
 	}

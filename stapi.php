@@ -6,7 +6,7 @@
  *	to a setup, however, it'll allow you to with ease create
  *	and maintain a new contract with a SecureTrading node.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
@@ -266,7 +266,7 @@ class STAPI
 	 */
 	public function resetSettlement()
 	{
-		$this->objects["settlement"] = new STPtSettlement();
+		$this->objects["settlement"] = new STPPSettlement();
 		return $this;
 	}
 	
@@ -424,5 +424,7 @@ class STAPI
 		}
 		
 		return $envelope;
+	}
+}
 	}
 }

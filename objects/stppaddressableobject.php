@@ -6,7 +6,7 @@
  *	quite a lot of functionality is shared between billing and customers, for
  *	example.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
@@ -219,7 +219,8 @@ abstract class STPPAddressable extends STPPObject
 		if(empty($this->options["telephone"]))
 			return false;
 		
-		$element->addChild("telephone", $this->options["telephone"]["number"])->addAttribute("type", $this->options["telephone"]["type"]);
+		$element->addChild("telephone", $this->escape($this->options["telephone"]["number"]))
+		        ->addAttribute("type", $this->escape($this->options["telephone"]["type"]));
 		
 		return true;
 	}

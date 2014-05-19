@@ -5,7 +5,7 @@
  *	The operation object contains some other information that is needed
  *	to complete the request.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 

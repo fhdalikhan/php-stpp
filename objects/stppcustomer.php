@@ -10,7 +10,7 @@
  *	no real need to fill in anything like addresses and such - however there
  *	/is/ a recommendation from ST to do so.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 

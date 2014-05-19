@@ -4,7 +4,7 @@
  *	
  *	This is the object that represents updated settlement details.
  *	
- *	@version: 1.0-beta
+ *	@version: 1.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
