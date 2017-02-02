@@ -33,7 +33,7 @@ class STPPBilling extends STPPAddressable
 		if(empty($this->options["amount"]["currencycode"]))
 			$this->options["amount"]["currencycode"] = "GBP";
 		
-		$this->options["amount"]["value"] = (integer) ($amount * 100);
+		$this->options["amount"]["value"] = sprintf("%.0f", $amount * 100);
 		
 		return $this;
 	}
