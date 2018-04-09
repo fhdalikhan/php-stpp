@@ -5,12 +5,15 @@
  *	The operation object contains some other information that is needed
  *	to complete the request.
  *	
- *	@version: 1.0
- *	@author: David Weston <stpp@typefish.co.uk>
+ *	@version: 2.0.0
+ *	@author: David Weston <westie@typefish.co.uk>
  */
 
 
-class STPPOperation extends STPPObject
+namespace OUTRAGElib\Payment\STPP\Fragment;
+
+
+class Operation extends FragmentAbstract
 {
 	/**
 	 *	Set the account type description of the call. Would normally

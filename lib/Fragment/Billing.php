@@ -7,17 +7,20 @@
  *	this class matches the name registered on the card. Addresses
  *	are also key.
  *	
- *	@version: 1.0
- *	@author: David Weston <stpp@typefish.co.uk>
+ *	@version: 2.0.0
+ *	@author: David Weston <westie@typefish.co.uk>
  */
 
 
-class STPPBilling extends STPPAddressable
+namespace OUTRAGElib\Payment\STPP\Fragment;
+
+
+class Billing extends AddressFragmentAbstract
 {
 	/**
 	 *	Store all of the options this object holds in here.
 	 */
-	protected $options = array();
+	protected $options = [];
 	
 	
 	/**
@@ -28,7 +31,7 @@ class STPPBilling extends STPPAddressable
 	public function setAmount($amount)
 	{
 		if(!isset($this->options["amount"]))
-			$this->options["amount"] = array();
+			$this->options["amount"] = [];
 		
 		if(empty($this->options["amount"]["currencycode"]))
 			$this->options["amount"]["currencycode"] = "GBP";
@@ -45,7 +48,7 @@ class STPPBilling extends STPPAddressable
 	public function setCurrency($currency)
 	{
 		if(!isset($this->options["amount"]))
-			$this->options["amount"] = array();
+			$this->options["amount"] = [];
 		
 		$this->options["amount"]["currencycode"] = $currency;
 		
@@ -60,7 +63,7 @@ class STPPBilling extends STPPAddressable
 	public function setPaymentType($type)
 	{
 		if(!isset($this->options["payment"]))
-			$this->options["payment"] = array();
+			$this->options["payment"] = [];
 		
 		$this->options["payment"]["type"] = strtoupper($type);
 		
@@ -74,7 +77,7 @@ class STPPBilling extends STPPAddressable
 	public function setPaymentCardNumber($number)
 	{
 		if(!isset($this->options["payment"]))
-			$this->options["payment"] = array();
+			$this->options["payment"] = [];
 		
 		$set = array
 		(
@@ -99,7 +102,7 @@ class STPPBilling extends STPPAddressable
 	public function setPaymentExpiryDate($expirydate)
 	{
 		if(!isset($this->options["payment"]))
-			$this->options["payment"] = array();
+			$this->options["payment"] = [];
 		
 		if(is_array($expirydate))
 		{
@@ -141,7 +144,7 @@ class STPPBilling extends STPPAddressable
 	public function setPaymentSecurityCode($code)
 	{
 		if(!isset($this->options["payment"]))
-			$this->options["payment"] = array();
+			$this->options["payment"] = [];
 		
 		$this->options["payment"]["securitycode"] = $code;
 		

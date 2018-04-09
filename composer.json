@@ -1,0 +1,24 @@
+{
+    "name": "outragelib/payment-stpp",
+    "description": "STPP/STAPI",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Weston",
+            "email": "westie@typefish.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "OUTRAGElib\\Payment\\STPP\\": "./lib"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OUTRAGElib\\Payment\\STPP\\Tests\\": "./tests"
+        }
+    }
+}

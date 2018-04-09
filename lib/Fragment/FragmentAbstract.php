@@ -5,17 +5,20 @@
  *	This is the god object for all parts of the request, such as
  *	the merchant, operations and such.
  *	
- *	@version: 1.0
- *	@author: David Weston <stpp@typefish.co.uk>
+ *	@version: 2.0.0
+ *	@author: David Weston <westie@typefish.co.uk>
  */
 
 
-abstract class STPPObject
+namespace OUTRAGElib\Payment\STPP\Fragment;
+
+
+abstract class FragmentAbstract
 {
 	/**
 	 *	Store all of the options this object holds in here.
 	 */
-	protected $options = array();
+	protected $options = [];
 	
 	
 	/**

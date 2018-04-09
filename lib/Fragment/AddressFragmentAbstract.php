@@ -6,17 +6,20 @@
  *	quite a lot of functionality is shared between billing and customers, for
  *	example.
  *	
- *	@version: 1.0
+ *	@version: 2.0.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
 
-abstract class STPPAddressable extends STPPObject
+namespace OUTRAGElib\Payment\STPP\Fragment;
+
+
+abstract class AddressFragmentAbstract extends FragmentAbstract
 {
 	/**
 	 *	Store all of the options this object holds in here.
 	 */
-	protected $options = array();
+	protected $options = [];
 	
 	
 	/**
@@ -95,7 +98,7 @@ abstract class STPPAddressable extends STPPObject
 	public function setNamePrefix($prefix)
 	{
 		if(!isset($this->options["name"]))
-			$this->options["name"] = array();
+			$this->options["name"] = [];
 		
 		$this->options["name"]["prefix"] = $prefix;
 		
@@ -109,7 +112,7 @@ abstract class STPPAddressable extends STPPObject
 	public function setFirstName($prefix)
 	{
 		if(!isset($this->options["name"]))
-			$this->options["name"] = array();
+			$this->options["name"] = [];
 		
 		$this->options["name"]["first"] = $prefix;
 		
@@ -123,7 +126,7 @@ abstract class STPPAddressable extends STPPObject
 	public function setMiddleName($middle)
 	{
 		if(!isset($this->options["name"]))
-			$this->options["name"] = array();
+			$this->options["name"] = [];
 		
 		$this->options["name"]["middle"] = $middle;
 		
@@ -137,7 +140,7 @@ abstract class STPPAddressable extends STPPObject
 	public function setLastName($last)
 	{
 		if(!isset($this->options["name"]))
-			$this->options["name"] = array();
+			$this->options["name"] = [];
 		
 		$this->options["name"]["last"] = $last;
 		
@@ -151,7 +154,7 @@ abstract class STPPAddressable extends STPPObject
 	public function setNameSuffix($suffix)
 	{
 		if(!isset($this->options["name"]))
-			$this->options["name"] = array();
+			$this->options["name"] = [];
 		
 		$this->options["name"]["suffix"] = $suffix;
 		
@@ -166,7 +169,7 @@ abstract class STPPAddressable extends STPPObject
 	public function setTelephone($phone)
 	{
 		if(!isset($this->options["telephone"]))
-			$this->options["telephone"] = array();
+			$this->options["telephone"] = [];
 		
 		if(empty($this->options["telephone"]["type"]))
 			$this->options["telephone"]["type"] = "H";
@@ -184,7 +187,7 @@ abstract class STPPAddressable extends STPPObject
 	public function setTelephoneType($type)
 	{
 		if(!isset($this->options["telephone"]))
-			$this->options["telephone"] = array();
+			$this->options["telephone"] = [];
 		
 		$this->options["telephone"]["type"] = $type;
 		

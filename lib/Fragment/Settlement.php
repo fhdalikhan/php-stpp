@@ -4,12 +4,15 @@
  *	
  *	This is the object that represents updated settlement details.
  *	
- *	@version: 1.0
- *	@author: David Weston <stpp@typefish.co.uk>
+ *	@version: 2.0.0
+ *	@author: David Weston <westie@typefish.co.uk>
  */
 
 
-class STPPSettlement extends STPPObject
+namespace OUTRAGElib\Payment\STPP\Fragment;
+
+
+class Settlement extends FragmentAbstract
 {
 	/**
 	 *	Set the settlement due date. Please note that you cannot
@@ -18,6 +21,9 @@ class STPPSettlement extends STPPObject
 	 */
 	public function setDate($settledate)
 	{
+		if(!isset($this->options["payment"]))
+			$this->options["payment"] = [];
+		
 		if(is_array($settledate))
 		{
 			$day = null;
@@ -62,6 +68,9 @@ class STPPSettlement extends STPPObject
 	 */
 	public function setStatus($status)
 	{
+		if(!isset($this->options["payment"]))
+			$this->options["payment"] = [];
+		
 		$this->options["payment"]["settlestatus"] = (string) $settledate;
 		
 		return $this;

@@ -1,32 +1,36 @@
 <?php
 /**
- *	PHP based wrapper for SecureTrading's new STPP protocol.
- *	
- *	The STPPResponse object parses the response from the SecureTrading endpoint,
- *	and puts it into a nice easy to use output.
+ *	Response for STPP/STAPI
  *
- *	This class can be used to revisit previous transactions. All you need to do is
- *	give the XML response as the argument to the constructor and all will be
- *	revealed.
- *	
- *	@version: 1.0
+ *	@version: 2.0.0
  *	@author: David Weston <stpp@typefish.co.uk>
  */
 
 
-class STPPResponse
+namespace OUTRAGElib\Payment\STPP;
+
+use \OUTRAGElib\Payment\STPP\Request;
+use \SimpleXMLElement;
+
+
+class Response
 {
 	/**
 	 *	Store the XML response somewhere...
 	 */
 	private $feed = null;
+	
+	
+	/**
+	 *	The request?
+	 */
 	private $request = null;
 	
 	
 	/**
 	 *	Called when the response has been constructed.
 	 */
-	public function __construct($response = null, $request = null)
+	public function __construct(Request $request, $response)
 	{
 		$this->feed = simplexml_load_string($response);
 		$this->request = $request;
@@ -84,6 +88,9 @@ class STPPResponse
 	 */
 	public function getTransactionReference()
 	{
+		if(!isset($this->feed->response->transactionreference))
+			return null;
+		
 		return (string) $this->feed->response->transactionreference;
 	}
 	
@@ -99,9 +106,9 @@ class STPPResponse
 	public function getSecurityRating()
 	{
 		if(!isset($this->feed->response->security))
-			return array();
+			return [];
 		
-		$set = array();
+		$set = [];
 		
 		foreach($this->feed->response->security as $node)
 		{
@@ -109,22 +116,16 @@ class STPPResponse
 			{
 				case 0:
 				case 1:
-				{
 					$set[$node->getName()] = null;
-					break;
-				}
+				break;
 				
 				case 2:
-				{
 					$set[$node->getName()] = true;
-					break;
-				}
+				break;
 				
 				case 4:
-				{
 					$set[$node->getName()] = false;
-					break;
-				}
+				break;
 			}
 		}
 		
@@ -141,6 +142,6 @@ class STPPResponse
 		if(!isset($this->feed->response->live))
 			return null;
 		
-		return ((integer) $this->feed->response->live == 1);
+		return (integer) $this->feed->response->live === 1;
 	}
 }

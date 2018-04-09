@@ -10,17 +10,20 @@
  *	no real need to fill in anything like addresses and such - however there
  *	/is/ a recommendation from ST to do so.
  *	
- *	@version: 1.0
- *	@author: David Weston <stpp@typefish.co.uk>
+ *	@version: 2.0.0
+ *	@author: David Weston <westie@typefish.co.uk>
  */
 
 
-class STPPCustomer extends STPPAddressable
+namespace OUTRAGElib\Payment\STPP\Fragment;
+
+
+class Customer extends AddressFragmentAbstract
 {
 	/**
 	 *	Store all of the options this object holds in here.
 	 */
-	protected $options = array();
+	protected $options = [];
 	
 	
 	/**

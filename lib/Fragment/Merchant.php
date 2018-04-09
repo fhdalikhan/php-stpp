@@ -10,12 +10,15 @@
  *	it is a required feature for 3D-Secure, which most if not all
  *	transactions should be performed using (if available).
  *	
- *	@version: 1.0
- *	@author: David Weston <stpp@typefish.co.uk>
+ *	@version: 2.0.0
+ *	@author: David Weston <westie@typefish.co.uk>
  */
 
 
-class STPPMerchant extends STPPObject
+namespace OUTRAGElib\Payment\STPP\Fragment;
+
+
+class Merchant extends FragmentAbstract
 {
 	/**
 	 *	Set the name of the merchant.
