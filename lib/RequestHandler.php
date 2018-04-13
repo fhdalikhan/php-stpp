@@ -87,7 +87,7 @@ class RequestHandler
 		curl_setopt($ch, CURLOPT_HEADER, false);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $this->request->getRequestXML());
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $this->request->getRequestXML($method));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		
@@ -96,9 +96,6 @@ class RequestHandler
 		
 		curl_close($ch);
 		
-		if($status)
-			return new Response($request, $output);
-		
-		return false;
+		return new Response($output);
 	}
 }

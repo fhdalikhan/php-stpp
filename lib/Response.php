@@ -11,9 +11,10 @@ namespace OUTRAGElib\Payment\STPP;
 
 use \OUTRAGElib\Payment\STPP\Request;
 use \SimpleXMLElement;
+use \Serializable;
 
 
-class Response
+class Response implements Serializable
 {
 	/**
 	 *	Store the XML response somewhere...
@@ -22,30 +23,13 @@ class Response
 	
 	
 	/**
-	 *	The request?
-	 */
-	private $request = null;
-	
-	
-	/**
 	 *	Called when the response has been constructed.
 	 */
-	public function __construct(Request $request, $response)
+	public function __construct($response)
 	{
 		$this->feed = simplexml_load_string($response);
-		$this->request = $request;
 		
 		return true;
-	}
-	
-	
-	/**
-	 *	Retrieves a cleansed version of the request - where this means
-	 *	all credit card information is removed.
-	 */
-	public function getRequest()
-	{
-		return $this->request;
 	}
 	
 	
@@ -143,5 +127,32 @@ class Response
 			return null;
 		
 		return (integer) $this->feed->response->live === 1;
+	}
+	
+	
+	/**
+	 *	Called to serialize an object
+	 */
+	public function serialize()
+	{
+		$vars = get_object_vars($this);
+		$vars["feed"] = $this->feed->asXML();
+		
+		return serialize($vars);
+	}
+	
+	
+	/**
+	 *	Called to unserialize an object
+	 */
+	public function unserialize($input)
+	{
+		$vars = unserialize($input);
+		$vars["feed"] = simplexml_load_string($vars["feed"]);
+		
+		foreach($vars as $key => $value)
+			$this->{$key} = $value;
+		
+		return true;
 	}
 }
