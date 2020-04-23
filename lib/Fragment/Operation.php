@@ -34,7 +34,33 @@ class Operation extends FragmentAbstract
 		$this->options["parenttransactionreference"] = $reference;
 		return $this;
 	}
+
+	/**
+	 *	Set the subscriptionnumber.
+	 */
+	public function setSubscriptionNumber($number)
+	{
+		$this->options["subscriptionnumber"] = $number;
+		return $this;
+	}
 	
+	/**
+	 *	Set the subscriptiontype.
+	 */
+	public function setSubscriptionType($type)
+	{
+		$this->options["subscriptiontype"] = $type;
+		return $this;
+	}
+	
+	/**
+	 *	Set the credentialsonfile 1 - store, 2 - use stored, not set - do not store
+	 */
+	public function setCredentialsOnFile($number)
+	{
+		$this->options["credentialsonfile"] = $number;
+		return $this;
+	}
 	
 	/**
 	 *	Set the site reference that is being used in this operation.
