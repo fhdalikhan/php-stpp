@@ -71,7 +71,7 @@ class Settlement extends FragmentAbstract
 		if(!isset($this->options["payment"]))
 			$this->options["payment"] = [];
 		
-		$this->options["payment"]["settlestatus"] = (string) $settledate;
+		$this->options["payment"]["settlestatus"] = (string) $status;
 		
 		return $this;
 	}
