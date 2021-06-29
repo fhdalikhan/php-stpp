@@ -14,6 +14,7 @@ use \OUTRAGElib\Payment\STPP\Fragment\Customer;
 use \OUTRAGElib\Payment\STPP\Fragment\Merchant;
 use \OUTRAGElib\Payment\STPP\Fragment\Operation;
 use \OUTRAGElib\Payment\STPP\Fragment\Settlement;
+use \OUTRAGElib\Payment\STPP\Fragment\Filter;
 use \OUTRAGElib\Payment\STPP\Response;
 use \SimpleXMLElement;
 
@@ -87,6 +88,22 @@ class Request
 			$this->objects["customer"] = new Customer();
 		
 		return $this->objects["customer"];
+	}
+	
+	
+	public function setFilter(Filter $filter)
+	{
+		$this->objects["filter"] = $filter;
+		return $this;
+	}
+	
+
+	public function getFilter()
+	{
+		if(!isset($this->objects["filter"]))
+			$this->objects["filter"] = new Filter();
+		
+		return $this->objects["filter"];
 	}
 	
 	
